@@ -36,9 +36,11 @@ function addNumbers(num1, num2) {
  * the returned value should look like: 'Goodbye, Andy. Have a great day.'
  * 
 */
-function sayGoodbye(/* code here */) {
-  /* code here */
+function sayGoodbye(name) {
+  console.log("Goodbye, " + name +". Have a great day.");
+  return "Goodbye, " + name +". Have a great day."
 }
+sayGoodbye("Brandon");
 
 /**
  * ### Challenge `temperatureCtoF`
@@ -54,9 +56,11 @@ function sayGoodbye(/* code here */) {
  * Hint 1: The formula for converting celsius to fahrenheit is t*9/5 + 32 where t is the temperature in celsius.
  * Hint 2: There is a very easy way to round numbers in JS. Do a google search to find out how. 
 */
-function temperatureCtoF(/* code here */) {
-  /* code here */
+function temperatureCtoF(temp) {
+  console.log(Math.round(temp * (9/5) + 32))
+  return Math.round(temp * (9/5) + 32)
 }
+temperatureCtoF(95);
 
 /**
  * ### Challenge `temperatureInF`
@@ -75,9 +79,20 @@ function temperatureCtoF(/* code here */) {
  * 
  * Hint: You can call your `temperatureCtoF` function from inside `temperatureInF`.
 */
-function temperatureInF(/* code here */) {
-  /* code here */
+function temperatureInF(temp, unit) {
+  if (unit === "F"){
+    console.log(Math.round(temp) + "F");
+    return temp + "F"
+  }
+  if (unit === "C"){
+    console.log(temperatureCtoF(temp) + "F");
+    return temperatureCtoF(temp) + "F"
+  } else {
+    console.log("Invalid Units")
+    return ("Invalid Units")
+  }
 }
+temperatureInF(50, "C");
 
 
 /**
@@ -96,9 +111,16 @@ function temperatureInF(/* code here */) {
  *   email: "leia@leia.com",
  * }
 */
-function makePersonObject(/* code here */) {
-  /* code here */
+function makePersonObject(number , realname , emailaddress) {
+  const user = {
+    id: number,
+    name: realname,
+    email: emailaddress
+  }
+  console.log(user)
+  return user
 }
+makePersonObject(42, "Brandon", "bcwoestman@gmail.com");
 
 /**
  * ### Challenge `getName`
@@ -113,9 +135,15 @@ function makePersonObject(/* code here */) {
  * passing { id: 1, name: 'Leia', email: 'leia@leia.com` } as the argument,
  * the returned value should look like `Hello, my name is Leia`.
 */
-function getName(/* code here */) {
-  /* code here */
+const user = {
+  id: 1,
+  name: "Leia",
+  email: "leia@leia.com"
 }
+function getName(name) {
+  console.log("Hello, my name is " + name + ".")
+}
+getName(user.name)
 
 
 /**
@@ -133,9 +161,18 @@ function getName(/* code here */) {
  * passing in [ 'orange', 'grape', 'apple', 'banana', 'mango' ] as the argument,
  * the returned value should be: 2.
 */
-function appleIndex(/* code here */) {
-  /* code here */
+var fruits = [ "orange", "grape", "apple", "banana", "mango" ];
+var fruitlength = fruits.length
+
+function appleIndex(array, length) {
+  for (i = 0 ; i < length ; i++){
+    if (array[i] === "apple"){
+      console.log(i);
+      return i
+    }
+  }
 }
+appleIndex(fruits, fruitlength)
 
 /**
  * ### Challenge `isItAnApple`
@@ -152,11 +189,20 @@ function appleIndex(/* code here */) {
  * passing in [ 'orange', 'apple', 'banana', 'apples', 'apple', 'mango' ] as the argument,
  * the returned value should be: [ false, true, false, false, true, false ].
 */
-function isItAnApple(/* code here */) {
-  /* code here */
+var fruit2 = [ 'orange', 'apple', 'banana', 'apples', 'apple', 'mango' ];
+var length2 = fruit2.length;
+
+function isItAnApple(array, length) {
+  for (i = 0 ; i < length ; i++){
+    if (array[i] === "apple"){
+      array[i] = "true"
+    } else {
+      array[i] = "false"
+    }
+  }
+  console.log(array)
 }
-
-
+isItAnApple(fruit2, length2)
 
 
 // ⭐️ Example Test Data ⭐️
@@ -189,7 +235,7 @@ var inventory = [
 **/
 function get3rdCar(inventory) {
   const the3rd = inventory[2];
-  return `The is a ${the3rd.car_make} ${the3rd.car_model}`
+  `The is a ${the3rd.car_make} ${the3rd.car_model}`
 }
 
 // 👇 COMPLETE YOUR WORK BELOW 👇
@@ -210,8 +256,10 @@ function get3rdCar(inventory) {
  * it will return `This is a Lincoln Navigator`.
 */
 function getCarInfoByIndex(inventory, index) {
-  /* code here */
+  const the3rd = inventory[index];
+  console.log(`The is a ${the3rd.car_make} ${the3rd.car_model}`);
 }
+getCarInfoByIndex(inventory, 0 )
 
 /**
  * ### Challenge `getLastCarInfo`
